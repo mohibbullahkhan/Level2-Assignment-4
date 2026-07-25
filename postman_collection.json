@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "RentNest API",
+    "name": "RentNest API - Full Collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -14,46 +14,63 @@
     {
       "name": "Auth",
       "item": [
-        {
-          "name": "Register",
-          "request": {
-            "method": "POST",
-            "url": "{{baseUrl}}/api/auth/register",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\",\n    \"role\": \"TENANT\"\n}",
-              "options": {
-                "raw": { "language": "json" }
-              }
-            }
-          }
-        },
-        {
-          "name": "Login",
-          "request": {
-            "method": "POST",
-            "url": "{{baseUrl}}/api/auth/login",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}",
-              "options": {
-                "raw": { "language": "json" }
-              }
-            }
-          }
-        }
+        { "name": "Register", "request": { "method": "POST", "url": "{{baseUrl}}/api/auth/register", "body": { "mode": "raw", "raw": "{\"name\": \"John Doe\",\"email\": \"john@example.com\",\"password\": \"password123\",\"role\": \"TENANT\",\"phone\": \"1234567890\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Login", "request": { "method": "POST", "url": "{{baseUrl}}/api/auth/login", "body": { "mode": "raw", "raw": "{\"email\": \"john@example.com\",\"password\": \"password123\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Refresh Token", "request": { "method": "POST", "url": "{{baseUrl}}/api/auth/refresh-token" } },
+        { "name": "Get Me", "request": { "method": "GET", "url": "{{baseUrl}}/api/auth/me" } }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        { "name": "Get Categories", "request": { "method": "GET", "url": "{{baseUrl}}/api/categories" } },
+        { "name": "Create Category (ADMIN)", "request": { "method": "POST", "url": "{{baseUrl}}/api/categories", "body": { "mode": "raw", "raw": "{\"name\": \"Apartment\", \"description\": \"A nice apartment\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Update Category (ADMIN)", "request": { "method": "PUT", "url": "{{baseUrl}}/api/categories/1", "body": { "mode": "raw", "raw": "{\"name\": \"New Name\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Delete Category (ADMIN)", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/categories/1" } }
       ]
     },
     {
       "name": "Properties",
       "item": [
-        {
-          "name": "Get Properties",
-          "request": {
-            "method": "GET",
-            "url": "{{baseUrl}}/api/properties"
-          }
-        }
+        { "name": "Get Properties", "request": { "method": "GET", "url": "{{baseUrl}}/api/properties" } },
+        { "name": "Get Property by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/properties/1" } },
+        { "name": "Create Property (LANDLORD)", "request": { "method": "POST", "url": "{{baseUrl}}/api/landlord/properties", "body": { "mode": "raw", "raw": "{\"title\": \"Nice Condo\", \"description\": \"Great place\", \"address\": \"123 Main St\", \"city\": \"New York\", \"price\": 1500, \"bedrooms\": 2, \"bathrooms\": 1, \"area\": 800, \"amenities\": [\"WiFi\"], \"categoryId\": \"1\", \"images\": [\"img.jpg\"]}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Update Property (LANDLORD)", "request": { "method": "PUT", "url": "{{baseUrl}}/api/landlord/properties/1", "body": { "mode": "raw", "raw": "{\"price\": 1600}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Delete Property (LANDLORD)", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/landlord/properties/1" } }
+      ]
+    },
+    {
+      "name": "Rentals",
+      "item": [
+        { "name": "Create Request (TENANT)", "request": { "method": "POST", "url": "{{baseUrl}}/api/rentals", "body": { "mode": "raw", "raw": "{\"propertyId\": \"1\", \"moveInDate\": \"2025-01-01\", \"message\": \"I want to rent\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Get My Requests (TENANT)", "request": { "method": "GET", "url": "{{baseUrl}}/api/rentals" } },
+        { "name": "Get Request by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/rentals/1" } },
+        { "name": "Get Landlord Requests (LANDLORD)", "request": { "method": "GET", "url": "{{baseUrl}}/api/landlord/requests" } },
+        { "name": "Update Request Status (LANDLORD)", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/landlord/requests/1", "body": { "mode": "raw", "raw": "{\"status\": \"APPROVED\"}", "options": { "raw": { "language": "json" } } } } }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        { "name": "Create Payment (TENANT)", "request": { "method": "POST", "url": "{{baseUrl}}/api/payments/create", "body": { "mode": "raw", "raw": "{\"rentalRequestId\": \"1\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Webhook", "request": { "method": "POST", "url": "{{baseUrl}}/api/payments/webhook", "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Get Payments (TENANT)", "request": { "method": "GET", "url": "{{baseUrl}}/api/payments" } },
+        { "name": "Get Payment by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/payments/1" } }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        { "name": "Create Review (TENANT)", "request": { "method": "POST", "url": "{{baseUrl}}/api/reviews", "body": { "mode": "raw", "raw": "{\"rentalRequestId\": \"1\", \"rating\": 5, \"comment\": \"Great!\"}", "options": { "raw": { "language": "json" } } } } }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        { "name": "Get Users", "request": { "method": "GET", "url": "{{baseUrl}}/api/admin/users" } },
+        { "name": "Update User Status", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/admin/users/1", "body": { "mode": "raw", "raw": "{\"status\": \"BANNED\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Get Admin Properties", "request": { "method": "GET", "url": "{{baseUrl}}/api/admin/properties" } },
+        { "name": "Get Admin Rentals", "request": { "method": "GET", "url": "{{baseUrl}}/api/admin/rentals" } }
       ]
     }
   ]
