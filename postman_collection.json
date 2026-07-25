@@ -46,7 +46,8 @@
         { "name": "Get My Requests (TENANT)", "request": { "method": "GET", "url": "{{baseUrl}}/api/rentals" } },
         { "name": "Get Request by ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/rentals/1" } },
         { "name": "Get Landlord Requests (LANDLORD)", "request": { "method": "GET", "url": "{{baseUrl}}/api/landlord/requests" } },
-        { "name": "Update Request Status (LANDLORD)", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/landlord/requests/1", "body": { "mode": "raw", "raw": "{\"status\": \"APPROVED\"}", "options": { "raw": { "language": "json" } } } } }
+        { "name": "Update Request Status (LANDLORD)", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/landlord/requests/1", "body": { "mode": "raw", "raw": "{\"status\": \"APPROVED\"}", "options": { "raw": { "language": "json" } } } } },
+        { "name": "Complete Request (LANDLORD)", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/landlord/requests/1/complete" } }
       ]
     },
     {

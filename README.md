@@ -34,7 +34,12 @@ RentNest is a rental property marketplace API built with Node.js, Express, TypeS
 - Multi-file Prisma schema setup
 - User authentication and role-based access control (Admin, Landlord, Tenant)
 - CRUD operations for properties, categories, rental requests
-- Payment processing via Stripe Webhooks
+- `GET /api/rentals/:id` (Tenant / Admin)
+- `GET /api/landlord/requests` (Landlord)
+- `PATCH /api/landlord/requests/:id` (Landlord)
+- `PATCH /api/landlord/requests/:id/complete` (Landlord) - Mark an ACTIVE request as COMPLETED
+
+### 5. Payments processing via Stripe Webhooks
 
 ## Endpoints
 

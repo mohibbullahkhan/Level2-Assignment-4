@@ -14,6 +14,7 @@ tenantRouter.get("/:id", auth(Role.TENANT, Role.ADMIN), RentalController.getRent
 
 landlordRouter.get("/", auth(Role.LANDLORD), RentalController.getLandlordRequests);
 landlordRouter.patch("/:id", auth(Role.LANDLORD), validateRequest(updateRentalStatusSchema), RentalController.updateRentalStatus);
+landlordRouter.patch("/:id/complete", auth(Role.LANDLORD), RentalController.completeRentalRequest);
 
 export const RentalRoutes = tenantRouter;
 export const LandlordRentalRoutes = landlordRouter;
