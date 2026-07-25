@@ -24,11 +24,14 @@ const registerUser = catchAsync(async (req: Request, res: Response) => {
     success: true,
     message: "User registered successfully",
     data: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      token: accessToken
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+      accessToken,
+      refreshToken
     }
   });
 });
