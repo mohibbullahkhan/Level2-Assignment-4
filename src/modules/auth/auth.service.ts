@@ -12,6 +12,10 @@ const registerUser = async (payload: any) => {
     throw new AppError(400, "User already exists");
   }
 
+  if (role === "ADMIN") {
+    throw new AppError(403, "Cannot register as ADMIN");
+  }
+
   const hashedPassword = await bcrypt.hash(password, Number(config.bcryptSaltRounds));
 
   const user = await prisma.user.create({
@@ -30,13 +34,13 @@ const registerUser = async (payload: any) => {
   const accessToken = jwt.sign(
     { id: user.id, email: user.email, role: user.role },
     config.jwt.accessSecret,
-    { expiresIn: config.jwt.accessExpiresIn }
+    { expiresIn: config.jwt.accessExpiresIn as any }
   );
   
   const refreshToken = jwt.sign(
     { id: user.id, email: user.email, role: user.role },
     config.jwt.refreshSecret,
-    { expiresIn: config.jwt.refreshExpiresIn }
+    { expiresIn: config.jwt.refreshExpiresIn as any }
   );
 
   return {
@@ -66,13 +70,13 @@ const loginUser = async (payload: any) => {
   const accessToken = jwt.sign(
     { id: user.id, email: user.email, role: user.role },
     config.jwt.accessSecret,
-    { expiresIn: config.jwt.accessExpiresIn }
+    { expiresIn: config.jwt.accessExpiresIn as any }
   );
   
   const refreshToken = jwt.sign(
     { id: user.id, email: user.email, role: user.role },
     config.jwt.refreshSecret,
-    { expiresIn: config.jwt.refreshExpiresIn }
+    { expiresIn: config.jwt.refreshExpiresIn as any }
   );
 
   return {
@@ -101,7 +105,7 @@ const refreshToken = async (token: string) => {
   const accessToken = jwt.sign(
     { id: user.id, email: user.email, role: user.role },
     config.jwt.accessSecret,
-    { expiresIn: config.jwt.accessExpiresIn }
+    { expiresIn: config.jwt.accessExpiresIn as any }
   );
 
   return {
