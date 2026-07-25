@@ -18,7 +18,6 @@
     "seed": "tsx prisma/seed.ts"
   },
   "devDependencies": {
-    "@prisma/config": "^7.9.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
