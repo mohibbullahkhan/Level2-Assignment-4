@@ -20,7 +20,7 @@ app.use("/api/payments/webhook", express.raw({ type: "application/json" }));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: config.appUrl, credentials: true }));
+app.use(cors({ origin: config.appUrl ? (config.appUrl.includes(",") ? config.appUrl.split(",") : config.appUrl) : true, credentials: true }));
 
 app.use("/api/auth", AuthRoutes);
 app.use("/api/categories", CategoryRoutes);
