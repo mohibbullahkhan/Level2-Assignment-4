@@ -1,20 +1,21 @@
-import { z } from "zod";
-import { Role } from "@prisma/client";
+export const registerSchema = (data: any) => {
+  const errors = [];
+  const body = data.body || {};
 
-export const registerSchema = z.object({
-  body: z.object({
-    name: z.string().min(1, "Name is required"),
-    email: z.string().email("Invalid email"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
-    role: z.enum([Role.TENANT, Role.LANDLORD]),
-    phone: z.string().optional(),
-    profileImage: z.string().optional(),
-  }),
-});
+  if (!body.name || typeof body.name !== 'string') errors.push({ field: 'body.name', message: 'Name is required and must be a string' });
+  if (!body.email || typeof body.email !== 'string' || !/^\S+@\S+\.\S+$/.test(body.email)) errors.push({ field: 'body.email', message: 'Valid email is required' });
+  if (!body.password || typeof body.password !== 'string' || body.password.length < 6) errors.push({ field: 'body.password', message: 'Password must be at least 6 characters long' });
+  if (body.role && !['ADMIN', 'LANDLORD', 'TENANT'].includes(body.role)) errors.push({ field: 'body.role', message: 'Invalid role' });
 
-export const loginSchema = z.object({
-  body: z.object({
-    email: z.string().email("Invalid email"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
-  }),
-});
+  return { isValid: errors.length === 0, errors };
+};
+
+export const loginSchema = (data: any) => {
+  const errors = [];
+  const body = data.body || {};
+
+  if (!body.email || typeof body.email !== 'string') errors.push({ field: 'body.email', message: 'Valid email is required' });
+  if (!body.password || typeof body.password !== 'string') errors.push({ field: 'body.password', message: 'Password is required' });
+
+  return { isValid: errors.length === 0, errors };
+};

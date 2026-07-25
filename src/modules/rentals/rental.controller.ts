@@ -24,7 +24,7 @@ const getTenantRequests = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getRentalById = catchAsync(async (req: Request, res: Response) => {
-  const result = await RentalService.getRentalById(req.params.id, req.user.id, req.user.role);
+  const result = await RentalService.getRentalById(req.params.id as string, req.user.id, req.user.role);
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -44,7 +44,7 @@ const getLandlordRequests = catchAsync(async (req: Request, res: Response) => {
 });
 
 const updateRentalStatus = catchAsync(async (req: Request, res: Response) => {
-  const result = await RentalService.updateRentalStatus(req.params.id, req.user.id, req.body.status);
+  const result = await RentalService.updateRentalStatus(req.params.id as string, req.user.id, req.body.status);
   sendResponse(res, {
     statusCode: 200,
     success: true,

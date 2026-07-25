@@ -30,7 +30,7 @@ const getTenantPayments = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getPaymentById = catchAsync(async (req: Request, res: Response) => {
-  const result = await PaymentService.getPaymentById(req.params.id, req.user.id, req.user.role);
+  const result = await PaymentService.getPaymentById(req.params.id as string, req.user.id, req.user.role);
   sendResponse(res, {
     statusCode: 200,
     success: true,

@@ -1,8 +1,10 @@
-import { z } from "zod";
-import { UserStatus } from "@prisma/client";
+export const updateUserStatusSchema = (data: any) => {
+  const errors = [];
+  const body = data.body || {};
 
-export const updateUserStatusSchema = z.object({
-  body: z.object({
-    status: z.enum([UserStatus.ACTIVE, UserStatus.BANNED]),
-  }),
-});
+  if (!body.status || !['ACTIVE', 'BANNED'].includes(body.status)) {
+    errors.push({ field: 'body.status', message: 'Status must be ACTIVE or BANNED' });
+  }
+
+  return { isValid: errors.length === 0, errors };
+};

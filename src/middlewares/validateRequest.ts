@@ -1,15 +1,26 @@
-import { AnyZodObject, ZodEffects } from "zod";
 import { catchAsync } from "../utils/catchAsync";
 import { NextFunction, Request, Response } from "express";
 
-export const validateRequest = (schema: AnyZodObject | ZodEffects<AnyZodObject>) => {
+export type ValidationFunction = (data: any) => { isValid: boolean; errors: any[] };
+
+export const validateRequest = (validator: ValidationFunction) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    await schema.parseAsync({
+    const result = validator({
       body: req.body,
       query: req.query,
       params: req.params,
-      cookies: req.cookies,
     });
+
+    if (!result.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errorDetails: {
+          issues: result.errors
+        }
+      });
+    }
+
     next();
   });
 };

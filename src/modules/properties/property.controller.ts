@@ -18,7 +18,7 @@ const getProperties = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getPropertyById = catchAsync(async (req: Request, res: Response) => {
-  const result = await PropertyService.getPropertyById(req.params.id);
+  const result = await PropertyService.getPropertyById(req.params.id as string);
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -38,7 +38,7 @@ const createProperty = catchAsync(async (req: Request, res: Response) => {
 });
 
 const updateProperty = catchAsync(async (req: Request, res: Response) => {
-  const result = await PropertyService.updateProperty(req.params.id, req.user.id, req.body);
+  const result = await PropertyService.updateProperty(req.params.id as string, req.user.id, req.body);
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -48,7 +48,7 @@ const updateProperty = catchAsync(async (req: Request, res: Response) => {
 });
 
 const deleteProperty = catchAsync(async (req: Request, res: Response) => {
-  const result = await PropertyService.deleteProperty(req.params.id, req.user.id);
+  const result = await PropertyService.deleteProperty(req.params.id as string, req.user.id);
   sendResponse(res, {
     statusCode: 200,
     success: true,
