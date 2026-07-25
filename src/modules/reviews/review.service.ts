@@ -12,6 +12,12 @@ const createReview = async (tenantId: string, payload: any) => {
   if (rentalRequest.tenantId !== tenantId) throw new AppError(403, "Forbidden");
   if (rentalRequest.status !== "COMPLETED") throw new AppError(400, "Rental is not COMPLETED yet");
 
+  const existingReview = await prisma.review.findFirst({
+    where: { rentalRequestId }
+  });
+
+  if (existingReview) throw new AppError(400, "You have already reviewed this rental request");
+
   return await prisma.review.create({
     data: {
       tenantId,
