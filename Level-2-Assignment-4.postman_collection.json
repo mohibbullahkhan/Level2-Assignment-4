@@ -1,0 +1,600 @@
+{
+  "info": {
+    "_postman_id": "18cf7210-c880-4a5e-a695-2481db18664e",
+    "name": "Level-2-Assignment-4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30464114"
+  },
+  "item": [
+    {
+      "name": "Tenant register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Rahim Mia\",\r\n  \"email\": \"rahim@tenant.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"TENANT\",\r\n  \"phone\": \"01711000001\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "landlord register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Karim Bhai\",\r\n  \"email\": \"karim@landlord.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"LANDLORD\",\r\n  \"phone\": \"01811000002\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Evil Admin\",\r\n  \"email\": \"evil@admin.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"ADMIN\",\r\n  \"phone\": \"01900000000\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tenant login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"rahim@tenant.com\",\r\n  \"password\": \"password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@rentnest.com\",\r\n  \"password\": \"password123\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get profile",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2YzQ3NDQyLTk1ZTAtNDhlZi05YTk4LTY0MjQ0ZmRmYzJkYiIsImVtYWlsIjoicmFoaW1AdGVuYW50LmNvbSIsInJvbGUiOiJURU5BTlQiLCJpYXQiOjE3ODQ5OTEwNzgsImV4cCI6MTc4NDk5MTk3OH0.k8ztJbo2mlGJ3y_1rzr-Lxcl9aGEyahSBF0k7aS19NY",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@rentnest.com\",\r\n  \"password\": \"password123\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/me",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Category create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNlODZkY2JiLTI0ZTAtNDcxZi1iYzg0LWRkMDc1MWVjNGRlZiIsImVtYWlsIjoiYWRtaW5AcmVudG5lc3QuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzg0OTkyMzg5LCJleHAiOjE3ODQ5OTMyODl9._fYTenU9BHVWkBUcGF9ZzxAtAIFaU55S2O4Rbk6-C5o",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Luxury Villa\",\r\n  \"description\": \"High end villas and luxury vacation homes\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Categories",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "landlord login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Karim Landlord\",\r\n  \"email\": \"karim@landlord.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"LANDLORD\",\r\n  \"phone\": \"01811112233\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Property",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiODUxYzcxLWEyMWUtNDE0Yy1iODNjLWUyMjc3NDllZjI2MSIsImVtYWlsIjoia2FyaW1AbGFuZGxvcmQuY29tIiwicm9sZSI6IkxBTkRMT1JEIiwiaWF0IjoxNzg0OTk0NDA3LCJleHAiOjE3ODQ5OTUzMDd9.u0IdyEHSpWru7FhLONkPy2Icl-eNg4bdKUYixVe0jYg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Modern Lakeview Flat\",\r\n  \"description\": \"Beautiful 3 bedroom flat with lake view\",\r\n  \"address\": \"Road 12, Gulshan\",\r\n  \"city\": \"Dhaka\",\r\n  \"price\": 35000,\r\n  \"bedrooms\": 3,\r\n  \"bathrooms\": 2,\r\n  \"area\": 1500,\r\n  \"amenities\": [\"WiFi\", \"Parking\", \"Lift\"],\r\n  \"categoryId\": \"ef65364c-cd85-4c17-ae04-9e571ab3471f\",\r\n  \"images\": [\"https://example.com/property1.jpg\"]\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/landlord/properties",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "landlord",
+            "properties"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Landlord's Own Properties",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiODUxYzcxLWEyMWUtNDE0Yy1iODNjLWUyMjc3NDllZjI2MSIsImVtYWlsIjoia2FyaW1AbGFuZGxvcmQuY29tIiwicm9sZSI6IkxBTkRMT1JEIiwiaWF0IjoxNzg0OTk0NDA3LCJleHAiOjE3ODQ5OTUzMDd9.u0IdyEHSpWru7FhLONkPy2Icl-eNg4bdKUYixVe0jYg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Modern Lakeview Flat\",\r\n  \"description\": \"Beautiful 3 bedroom flat with lake view\",\r\n  \"address\": \"Road 12, Gulshan\",\r\n  \"city\": \"Dhaka\",\r\n  \"price\": 35000,\r\n  \"bedrooms\": 3,\r\n  \"bathrooms\": 2,\r\n  \"area\": 1500,\r\n  \"amenities\": [\"WiFi\", \"Parking\", \"Lift\"],\r\n  \"categoryId\": \"ef65364c-cd85-4c17-ae04-9e571ab3471f\",\r\n  \"images\": [\"https://example.com/property1.jpg\"]\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/properties",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "properties"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tenant Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Rahim Tenant\",\r\n  \"email\": \"rahim@tenant.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"TENANT\",\r\n  \"phone\": \"01711112233\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "View Public Properties",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/properties",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "properties"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Rental Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2YzQ3NDQyLTk1ZTAtNDhlZi05YTk4LTY0MjQ0ZmRmYzJkYiIsImVtYWlsIjoicmFoaW1AdGVuYW50LmNvbSIsInJvbGUiOiJURU5BTlQiLCJpYXQiOjE3ODUwMDEyMDQsImV4cCI6MTc4NTAwMjEwNH0.HqFupx6VQzOcLpmduuCSMP6V1FvwQYNjjFJuUtpj2vY",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2YzQ3NDQyLTk1ZTAtNDhlZi05YTk4LTY0MjQ0ZmRmYzJkYiIsImVtYWlsIjoicmFoaW1AdGVuYW50LmNvbSIsInJvbGUiOiJURU5BTlQiLCJpYXQiOjE3ODUwMDg5MTAsImV4cCI6MTc4NTAwOTgxMH0.8vN1bK40An5vZkRHkFRsQzUOuCNlH_XzDKsFBNIA1qU",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"propertyId\": \"0d063742-a75d-4fd0-8dcc-e884cc176f67\",\r\n  \"moveInDate\": \"2026-08-15T00:00:00.000Z\",\r\n  \"message\": \"I would like to move in from August 15th.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/rentals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "rentals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Landlord approval flow",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiODUxYzcxLWEyMWUtNDE0Yy1iODNjLWUyMjc3NDllZjI2MSIsImVtYWlsIjoia2FyaW1AbGFuZGxvcmQuY29tIiwicm9sZSI6IkxBTkRMT1JEIiwiaWF0IjoxNzg1MDA5NjY3LCJleHAiOjE3ODUwMTA1Njd9.BJcWhubve9aWep2DWx99Joox9xkUQkH6obit78hysAg",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/landlord/requests",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "landlord",
+            "requests"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Landlord request update",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiODUxYzcxLWEyMWUtNDE0Yy1iODNjLWUyMjc3NDllZjI2MSIsImVtYWlsIjoia2FyaW1AbGFuZGxvcmQuY29tIiwicm9sZSI6IkxBTkRMT1JEIiwiaWF0IjoxNzg1MDA5NjY3LCJleHAiOjE3ODUwMTA1Njd9.BJcWhubve9aWep2DWx99Joox9xkUQkH6obit78hysAg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"APPROVED\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/landlord/requests/da5578de-094f-410d-97fa-07ed73370c02",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "landlord",
+            "requests",
+            "da5578de-094f-410d-97fa-07ed73370c02"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2YzQ3NDQyLTk1ZTAtNDhlZi05YTk4LTY0MjQ0ZmRmYzJkYiIsImVtYWlsIjoicmFoaW1AdGVuYW50LmNvbSIsInJvbGUiOiJURU5BTlQiLCJpYXQiOjE3ODUwMDk5MzIsImV4cCI6MTc4NTAxMDgzMn0.8lUZ9YxfRJ4_FVOwOvfLm_lGYEy1NdSMwNTmjgRozIE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"rentalRequestId\": \"da5578de-094f-410d-97fa-07ed73370c02\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/payments/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "payments",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add review",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2YzQ3NDQyLTk1ZTAtNDhlZi05YTk4LTY0MjQ0ZmRmYzJkYiIsImVtYWlsIjoicmFoaW1AdGVuYW50LmNvbSIsInJvbGUiOiJURU5BTlQiLCJpYXQiOjE3ODUwMTExNDcsImV4cCI6MTc4NTAxMjA0N30.6ZQZ9FUvIlpE1EJfm112vWaz7Lz0df2LnivHe8gZql8",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"rentalRequestId\": \"da5578de-094f-410d-97fa-07ed73370c02\",\r\n  \"rating\": 5,\r\n  \"comment\": \"Awesome place to live!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/reviews",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "reviews"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all users(Admin)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
